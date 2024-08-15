@@ -6,6 +6,7 @@ export default function PostStack({
   posts,
   searchText = '',
   sortMethod = 0,
+  isAscending = false,
 }: PostStackProps) {
   const sortedPosts = posts.sort((postA, postB) => {
     const sortKey = sortMethod === 0 ? 'postedAt' : 'likesNum';
@@ -15,6 +16,8 @@ export default function PostStack({
   const filteredPosts = sortedPosts.filter((post) =>
     post.content.toLowerCase().includes(searchText.toLowerCase())
   );
+
+  if (isAscending) filteredPosts.reverse();
 
   return filteredPosts.length > 0 ? (
     <Stack direction="column" spacing={1}>

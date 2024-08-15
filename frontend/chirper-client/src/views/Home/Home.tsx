@@ -7,19 +7,23 @@ import { useState } from 'react';
 export default function Home() {
   const [searchText, setSearchText] = useState('');
   const [sortMethod, setSortMethod] = useState(0);
+  const [isAscending, setIsAscending] = useState(false);
 
   return (
     <Grid container direction="column" alignItems="center">
       <SearchBarAndSort
         searchText={searchText}
         sortMethod={sortMethod}
+        isAscending={isAscending}
         onSearchTextChange={setSearchText}
         onSortMethodChange={setSortMethod}
+        onSortOrderChange={setIsAscending}
       />
       <PostStack
+        posts={posts}
         searchText={searchText}
         sortMethod={sortMethod}
-        posts={posts}
+        isAscending={isAscending}
       />
     </Grid>
   );

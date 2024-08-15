@@ -4,4 +4,5 @@ export type PostStackProps = {
   posts: Post[];
   searchText: string;
   sortMethod: number;
+  isAscending: boolean;
 };
