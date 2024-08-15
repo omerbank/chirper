@@ -36,7 +36,7 @@ export default function Post({ post }: PostProps) {
             <FavoriteIcon />
           </IconButton>
           <Typography variant="button" sx={{ ml: '-2px !important' }}>
-            {post.likesNum}
+            {post.likesNum > 0 && post.likesNum}
           </Typography>
         </CardActions>
       </Box>
