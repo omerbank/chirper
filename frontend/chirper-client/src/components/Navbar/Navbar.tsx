@@ -2,7 +2,10 @@ import { AppBar, Toolbar, Typography } from '@mui/material';
 
 export default function Navbar() {
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#347380', mb: 3 }}>
+    <AppBar
+      position="static"
+      sx={{ backgroundColor: '#347380', mb: 5, boxShadow: 'none' }}
+    >
       <Toolbar sx={{ padding: 1, display: 'flex', gap: 1 }} disableGutters>
         <img src="/chirper.svg" alt="Chirper Logo" width="75" />
         <Typography

@@ -5,7 +5,7 @@ export const posts = [
     avatarUrl: 'https://pbs.twimg.com/media/F7c5AR4XAAAihxj.jpg',
     postedAt: new Date('07-13-2021'),
     content: 'This is my first Chirp!',
-    likesNum: 19,
+    likesNum: 54,
   },
   {
     id: '5d669405-2767-4a22-a891-8ee550e412a0',
@@ -30,10 +30,10 @@ export const posts = [
     username: 'ILOVECHIRPER',
     avatarUrl:
       'https://wallpapers.com/images/hd/tweety-bird-pictures-1000-x-1000-p1h0xeq5ls2h25tp.jpg',
-    postedAt: new Date('12-31-2056'),
+    postedAt: new Date('12-31-2000'),
     content:
       'OMG OMG OMG I LOVE CHIRPER I LOVE IT SO MUCH I LOVE CHRIPER ITS THE BEST THING IN THE WORLD WTF THIS IS CRAZY IM DYING AHHHHHHHHHHHHHHHHHHHHHHHHHHHHH',
-    likesNum: 5436,
+    likesNum: 546,
   },
   {
     id: '090edb63-f952-48cc-8a02-446e0713945e',
@@ -50,7 +50,7 @@ export const posts = [
     avatarUrl:
       'https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-png-transparent.png',
     postedAt: new Date('08-15-2024'),
-    content: 'React is amazing but this site is shit LMAO',
-    likesNum: 123,
+    content: 'Wowwwwww I love react so muchhhhhhhhhhhh',
+    likesNum: 11,
   },
 ];
