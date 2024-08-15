@@ -14,18 +14,18 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 
 export default function Post({ post }: PostProps) {
   return (
-    <Card variant="outlined" sx={{ maxWidth: 540 }}>
+    <Card variant="outlined" sx={{ width: 540 }}>
       <CardHeader
         avatar={
           <Avatar
-            alt={post.username}
             src={post.avatarUrl}
+            alt={`${post.username}'s Avatar`}
             sx={{ width: 56, height: 56 }}
           />
         }
-        title={'@' + post.username}
+        title={`@${post.username}`}
         subheader={formatDate(post.postedAt)}
-        titleTypographyProps={{ fontSize: 16, fontWeight: 'bold' }}
+        titleTypographyProps={{ fontSize: 16, fontWeight: 600 }}
       />
       <Box sx={{ ml: '4px', mt: -2 }}>
         <CardContent>
@@ -35,7 +35,7 @@ export default function Post({ post }: PostProps) {
           <IconButton>
             <FavoriteIcon />
           </IconButton>
-          <Typography variant="button" sx={{ ml: '-2px !important ' }}>
+          <Typography variant="button" sx={{ ml: '-2px !important' }}>
             {post.likesNum}
           </Typography>
         </CardActions>
