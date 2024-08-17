@@ -1,33 +1,30 @@
 import { Alert, Stack } from '@mui/material';
 import { PostStackProps } from './types';
 import Post from '../Post';
+import { getFilteredPosts, getSortedPosts } from './utils';
 
 export default function PostStack({
   posts,
   searchText = '',
-  sortMethod = 0,
-  isAscending = false,
+  sortMethod = 'date-desc',
 }: PostStackProps) {
-  const sortedPosts = posts.sort((postA, postB) => {
-    const sortKey = sortMethod === 0 ? 'postedAt' : 'likesNum';
-    return +postB[sortKey] - +postA[sortKey];
-  });
+  const filteredPosts = getFilteredPosts(posts, searchText);
 
-  const filteredPosts = sortedPosts.filter((post) =>
-    post.content.toLowerCase().includes(searchText.toLowerCase())
-  );
+  if (filteredPosts.length === 0) {
+    return (
+      <Alert severity="info" sx={{ width: 510, mt: 2 }}>
+        No posts were found.
+      </Alert>
+    );
+  }
 
-  if (isAscending) filteredPosts.reverse();
+  const sortedPosts = getSortedPosts(filteredPosts, sortMethod);
 
-  return filteredPosts.length > 0 ? (
+  return (
     <Stack direction="column" spacing={1}>
-      {filteredPosts.map((post) => (
+      {sortedPosts.map((post) => (
         <Post post={post} key={post.id} />
       ))}
     </Stack>
-  ) : (
-    <Alert severity="info" sx={{ width: 510, mt: 2 }}>
-      No posts were found.
-    </Alert>
   );
 }

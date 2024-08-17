@@ -3,7 +3,7 @@ export const posts = [
     id: '9b69e0b3-e2bd-46b8-a510-6d030b7c8b64',
     username: 'omeromer1112',
     avatarUrl: 'https://pbs.twimg.com/media/F7c5AR4XAAAihxj.jpg',
-    postedAt: new Date('07-13-2021'),
+    postedAt: new Date('07-13-2026'),
     content: 'This is my first Chirp!',
     likesNum: 54,
   },

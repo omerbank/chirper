@@ -1,50 +1,50 @@
 import {
   Box,
   FormControl,
-  IconButton,
+  InputAdornment,
   InputLabel,
   MenuItem,
   Select,
   TextField,
 } from '@mui/material';
-import { SearchBarAndSortProps } from './types';
-import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
+import { SearchBarAndSortProps, SortMethod } from './types';
+import SearchIcon from '@mui/icons-material/Search';
 
 export default function SearchBarAndSort({
   searchText,
   sortMethod,
-  isAscending,
   onSearchTextChange,
   onSortMethodChange,
-  onSortOrderChange,
 }: SearchBarAndSortProps) {
   return (
     <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
-      <IconButton onClick={() => onSortOrderChange(!isAscending)}>
-        {isAscending ? (
-          <ArrowDropUp sx={{ fontSize: 40 }}></ArrowDropUp>
-        ) : (
-          <ArrowDropDown sx={{ fontSize: 40 }}></ArrowDropDown>
-        )}
-      </IconButton>
-      <FormControl sx={{ width: 130, ml: -1 }}>
+      <FormControl sx={{ width: 150 }}>
         <InputLabel id="sort-by-label">Sort By</InputLabel>
         <Select
           labelId="sort-by-label"
-          value={sortMethod}
           label="Sort By"
-          onChange={(e) => onSortMethodChange(e.target.value as number)}
+          value={sortMethod}
+          onChange={(e) => onSortMethodChange(e.target.value as SortMethod)}
         >
-          <MenuItem value={0}>Date</MenuItem>
-          <MenuItem value={1}>Popularity</MenuItem>
+          <MenuItem value="date-desc">Newest First</MenuItem>
+          <MenuItem value="date-asc">Oldest First</MenuItem>
+          <MenuItem value="popularity-desc">Most Popular</MenuItem>
+          <MenuItem value="popularity-asc">Least Popular</MenuItem>
         </Select>
       </FormControl>
       <TextField
-        label="Search..."
+        placeholder="Search..."
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon></SearchIcon>
+            </InputAdornment>
+          ),
+        }}
         variant="outlined"
         value={searchText}
         onChange={(e) => onSearchTextChange(e.target.value)}
-        sx={{ width: 335 }}
+        sx={{ width: 375 }}
       />
     </Box>
   );
