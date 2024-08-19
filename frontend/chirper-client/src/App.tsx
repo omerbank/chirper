@@ -1,15 +1,14 @@
-import { GlobalStyles } from '@mui/material';
+import { CssBaseline } from '@mui/material';
 import Navbar from './components/Navbar';
 import Home from './views/Home';
+import UserProvider from './services/contexts/UserContext';
 
 export default function App() {
   return (
-    <>
-      <GlobalStyles
-        styles={{ body: { margin: 0, padding: 0, marginBottom: 25 } }}
-      />
+    <UserProvider>
+      <CssBaseline />
       <Navbar />
       <Home />
-    </>
+    </UserProvider>
   );
 }

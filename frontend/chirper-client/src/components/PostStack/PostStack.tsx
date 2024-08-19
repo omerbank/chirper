@@ -10,9 +10,9 @@ export default function PostStack({
 }: PostStackProps) {
   const filteredPosts = getFilteredPosts(posts, searchText);
 
-  if (filteredPosts.length === 0) {
+  if (!filteredPosts.length) {
     return (
-      <Alert severity="info" sx={{ width: 510, mt: 2 }}>
+      <Alert severity="info" sx={{ width: 540, mt: 2 }}>
         No posts were found.
       </Alert>
     );
