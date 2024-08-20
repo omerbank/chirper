@@ -29,7 +29,7 @@ export const posts = [
     id: '5dd76681-a029-454c-89f4-1cafb1c3a783',
     username: 'ILOVECHIRPER',
     avatarUrl:
-      'https://wallpapers.com/images/hd/tweety-bird-pictures-1000-x-1000-p1h0xeq5ls2h25tp.jpg',
+      'https://i.pinimg.com/736x/4e/b2/67/4eb267b9dc3e6d83e808d56240034e40.jpg',
     postedAt: new Date('12-31-2000'),
     content:
       'OMG OMG OMG I LOVE CHIRPER I LOVE IT SO MUCH I LOVE CHRIPER ITS THE BEST THING IN THE WORLD WTF THIS IS CRAZY IM DYING AHHHHHHHHHHHHHHHHHHHHHHHHHHHHH',

@@ -1,14 +1,21 @@
 import { CssBaseline } from '@mui/material';
-import Navbar from './components/Navbar';
-import Home from './views/Home';
 import UserProvider from './services/contexts/UserContext';
+import Navbar from './components/Navbar';
+import { Outlet } from 'react-router-dom';
+import { ReactNode } from 'react';
 
-export default function App() {
+export default function App({ outlet }: AppProps) {
   return (
-    <UserProvider>
+    <>
       <CssBaseline />
-      <Navbar />
-      <Home />
-    </UserProvider>
+      <UserProvider>
+        <Navbar />
+        {outlet ?? <Outlet />}
+      </UserProvider>
+    </>
   );
 }
+
+type AppProps = {
+  outlet?: ReactNode;
+};

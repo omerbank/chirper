@@ -1,5 +1,8 @@
-import { SortMethod } from '../../views/Home/SearchBarAndSort/types';
 import { Post } from '../Post/types';
+import {
+  SortMethod,
+  sortMethodsDetails,
+} from '../../views/Home/SearchBarAndSort/types';
 
 export function getFilteredPosts(posts: Post[], filterText: string) {
   return posts.filter((post) =>
@@ -8,7 +11,7 @@ export function getFilteredPosts(posts: Post[], filterText: string) {
 }
 
 export function getSortedPosts(posts: Post[], sortMethod: SortMethod) {
-  const sortKey = sortMethod.startsWith('date') ? 'postedAt' : 'likesNum';
+  const sortKey = sortMethodsDetails[sortMethod].sortProperty as keyof Post;
   const isAscending = sortMethod.endsWith('asc');
 
   return [...posts].sort((postA, postB) => {

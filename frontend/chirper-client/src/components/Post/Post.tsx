@@ -1,3 +1,4 @@
+import { PostProps } from './types';
 import {
   Avatar,
   Box,
@@ -8,7 +9,6 @@ import {
   IconButton,
   Typography,
 } from '@mui/material';
-import { PostProps } from './types';
 import { formatDate } from './utils';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
@@ -20,19 +20,20 @@ export default function Post({ post }: PostProps) {
           <Avatar
             src={post.avatarUrl}
             alt={`${post.username}'s Avatar`}
-            sx={{ width: 56, height: 56 }}
+            sx={{ width: 52, height: 52 }}
           />
         }
         title={`@${post.username}`}
         subheader={formatDate(post.postedAt)}
         titleTypographyProps={{ fontSize: 16, fontWeight: 600 }}
+        sx={{ pb: 0 }}
       />
-      <Box sx={{ ml: '4px', mt: -2 }}>
+      <Box sx={{ ml: '4px' }}>
         <CardContent>
           <Typography variant="body1">{post.content}</Typography>
         </CardContent>
         <CardActions>
-          <IconButton>
+          <IconButton onClick={(e) => e.preventDefault()}>
             <FavoriteIcon />
           </IconButton>
           <Typography variant="button" sx={{ ml: '-2px !important' }}>

@@ -1,4 +1,10 @@
 import {
+  SearchBarAndSortProps,
+  SortMethod,
+  sortMethods,
+  sortMethodsDetails,
+} from './types';
+import {
   Box,
   FormControl,
   InputAdornment,
@@ -7,7 +13,6 @@ import {
   Select,
   TextField,
 } from '@mui/material';
-import { SearchBarAndSortProps, SortMethod } from './types';
 import SearchIcon from '@mui/icons-material/Search';
 
 export default function SearchBarAndSort({
@@ -17,8 +22,8 @@ export default function SearchBarAndSort({
   onSortMethodChange,
 }: SearchBarAndSortProps) {
   return (
-    <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
-      <FormControl sx={{ width: 150 }}>
+    <Box sx={{ width: 540, display: 'flex', gap: 2 }}>
+      <FormControl>
         <InputLabel id="sort-by-label">Sort By</InputLabel>
         <Select
           labelId="sort-by-label"
@@ -26,10 +31,11 @@ export default function SearchBarAndSort({
           value={sortMethod}
           onChange={(e) => onSortMethodChange(e.target.value as SortMethod)}
         >
-          <MenuItem value="date-desc">Newest First</MenuItem>
-          <MenuItem value="date-asc">Oldest First</MenuItem>
-          <MenuItem value="popularity-desc">Most Popular</MenuItem>
-          <MenuItem value="popularity-asc">Least Popular</MenuItem>
+          {sortMethods.map((sortMethod) => (
+            <MenuItem value={sortMethod} key={sortMethod}>
+              {sortMethodsDetails[sortMethod].displayName}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
       <TextField
@@ -44,7 +50,7 @@ export default function SearchBarAndSort({
         variant="outlined"
         value={searchText}
         onChange={(e) => onSearchTextChange(e.target.value)}
-        sx={{ width: 375 }}
+        sx={{ flexGrow: 1 }}
       />
     </Box>
   );

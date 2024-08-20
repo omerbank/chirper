@@ -1,7 +1,8 @@
-import { Alert, Stack } from '@mui/material';
 import { PostStackProps } from './types';
-import Post from '../Post';
 import { getFilteredPosts, getSortedPosts } from './utils';
+import { Alert, Stack } from '@mui/material';
+import Post from '../Post';
+import { Link } from 'react-router-dom';
 
 export default function PostStack({
   posts,
@@ -23,7 +24,13 @@ export default function PostStack({
   return (
     <Stack direction="column" spacing={1}>
       {sortedPosts.map((post) => (
-        <Post post={post} key={post.id} />
+        <Link
+          to={`posts/${post.id}`}
+          key={post.id}
+          style={{ textDecoration: 'none' }}
+        >
+          <Post post={post} />
+        </Link>
       ))}
     </Stack>
   );

@@ -1,5 +1,5 @@
-import { Button } from '@mui/material';
 import { CustomButtonProps } from './types';
+import { Button } from '@mui/material';
 
 export default function CustomButton({ options }: CustomButtonProps) {
   return (
