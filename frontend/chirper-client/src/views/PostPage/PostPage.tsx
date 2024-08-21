@@ -3,7 +3,7 @@ import { PostProps } from '../../components/Post/types';
 import { Grid } from '@mui/material';
 import Post from '../../components/Post';
 
-export default function PostPage() {
+export const PostPage = () => {
   const { post } = useLoaderData() as PostProps;
 
   return (
@@ -11,4 +11,4 @@ export default function PostPage() {
       <Post post={post} />
     </Grid>
   );
-}
+};
