@@ -9,7 +9,7 @@ import {
   IconButton,
   Typography,
 } from '@mui/material';
-import { formatDate } from './utils';
+import moment from 'moment';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 export default function Post({ post }: PostProps) {
@@ -24,7 +24,7 @@ export default function Post({ post }: PostProps) {
           />
         }
         title={`@${post.username}`}
-        subheader={formatDate(post.postedAt)}
+        subheader={moment(post.postedAt).format('MMMM DD, y, HH:mm')}
         titleTypographyProps={{ fontSize: 16, fontWeight: 600 }}
         sx={{ pb: 0 }}
       />

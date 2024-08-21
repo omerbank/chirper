@@ -2,7 +2,7 @@ export type Post = {
   id: string;
   username: string;
   avatarUrl: string;
-  postedAt: Date;
+  postedAt: string;
   content: string;
   likesNum: number;
 };

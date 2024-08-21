@@ -3,7 +3,7 @@ export const posts = [
     id: '9b69e0b3-e2bd-46b8-a510-6d030b7c8b64',
     username: 'omeromer1112',
     avatarUrl: 'https://pbs.twimg.com/media/F7c5AR4XAAAihxj.jpg',
-    postedAt: new Date('07-13-2026'),
+    postedAt: '07-13-2026 13:54:24',
     content: 'This is my first Chirp!',
     likesNum: 54,
   },
@@ -12,7 +12,7 @@ export const posts = [
     username: 'blahblah',
     avatarUrl:
       'https://i.pinimg.com/736x/0b/b2/3c/0bb23c732d4fe077c29c52367860f87d.jpg',
-    postedAt: new Date('03-26-2013'),
+    postedAt: '03-26-2013 21:21:22',
     content: "Wow, Chirper is so cool. It's my new favorite social media.",
     likesNum: 1,
   },
@@ -21,7 +21,7 @@ export const posts = [
     username: 'chirper_enthusiast',
     avatarUrl:
       'https://www.bto.org/sites/default/files/birdfacts/00438_Nuthatch_Sarah%20Kelman.jpg',
-    postedAt: new Date('11-12-1999'),
+    postedAt: '11-12-1999 10:30:13',
     content: 'This is a really good site!',
     likesNum: 7,
   },
@@ -30,7 +30,7 @@ export const posts = [
     username: 'ILOVECHIRPER',
     avatarUrl:
       'https://i.pinimg.com/736x/4e/b2/67/4eb267b9dc3e6d83e808d56240034e40.jpg',
-    postedAt: new Date('12-31-2000'),
+    postedAt: '12-31-2000 17:01:59',
     content:
       'OMG OMG OMG I LOVE CHIRPER I LOVE IT SO MUCH I LOVE CHRIPER ITS THE BEST THING IN THE WORLD WTF THIS IS CRAZY IM DYING AHHHHHHHHHHHHHHHHHHHHHHHHHHHHH',
     likesNum: 546,
@@ -40,7 +40,7 @@ export const posts = [
     username: 'JotaroKujo123321',
     avatarUrl:
       'https://i.pinimg.com/474x/56/7d/3e/567d3e70a02534a0edff637d2c669dc2.jpg',
-    postedAt: new Date('01-11-1976'),
+    postedAt: '01-11-1976 03:27:25',
     content: 'Yare Yare Daze...',
     likesNum: 0,
   },
@@ -49,7 +49,7 @@ export const posts = [
     username: 'xXx_react_rul3z_xXx',
     avatarUrl:
       'https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-png-transparent.png',
-    postedAt: new Date('08-15-2024'),
+    postedAt: '08-15-2024 07:18:33',
     content: 'Wowwwwww I love react so muchhhhhhhhhhhh',
     likesNum: 11,
   },
