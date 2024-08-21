@@ -1,1 +1,2 @@
-export { default } from './UserContext';
+export { UserProvider } from './UserContext';
+export { useUser } from './hooks';

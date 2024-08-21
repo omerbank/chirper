@@ -1,5 +1,5 @@
 import { CssBaseline } from '@mui/material';
-import UserProvider from './services/contexts/UserContext';
+import { UserProvider } from './services/contexts/UserContext';
 import Navbar from './components/Navbar';
 import { Outlet } from 'react-router-dom';
 import { ReactNode } from 'react';

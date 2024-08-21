@@ -1,23 +1,14 @@
-import { createContext, useState } from 'react';
-import {
-  UserContextType,
-  UserProviderProps,
-  UserUpdateContextType,
-} from './types';
+import { createContext, FC, useState } from 'react';
+import { UserContextType, UserProviderProps, UserState } from './types';
 
-export const UserContext = createContext<UserContextType>(null);
-export const UserUpdateContext = createContext<UserUpdateContextType>(
-  {} as UserUpdateContextType
-);
+export const UserContext = createContext<UserContextType>(null!);
 
-export default function UserProvider({ children }: UserProviderProps) {
-  const [user, setUser] = useState<UserContextType>(null);
+export const UserProvider: FC<UserProviderProps> = ({ children }) => {
+  const [user, setUser] = useState<UserState>(null);
 
   return (
-    <UserContext.Provider value={user}>
-      <UserUpdateContext.Provider value={setUser}>
-        {children}
-      </UserUpdateContext.Provider>
+    <UserContext.Provider value={{ user, setUser }}>
+      {children}
     </UserContext.Provider>
   );
-}
+};

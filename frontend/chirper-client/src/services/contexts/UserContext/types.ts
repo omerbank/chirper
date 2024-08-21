@@ -1,13 +1,16 @@
-import { ReactNode } from 'react';
+import { Dispatch, ReactNode, SetStateAction } from 'react';
 
-export type User = {
+type User = {
   id: string;
   username: string;
-  avatarUrl?: string;
+  avatarUrl: string;
 };
 
-export type UserContextType = User | null;
-export type UserUpdateContextType = React.Dispatch<
-  React.SetStateAction<UserContextType>
->;
+export type UserState = User | null;
+
+export type UserContextType = {
+  user: UserState;
+  setUser: Dispatch<SetStateAction<UserState>>;
+};
+
 export type UserProviderProps = { children: ReactNode };
