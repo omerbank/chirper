@@ -1,6 +1,5 @@
-import { FC, ReactNode } from 'react';
-import { CssBaseline } from '@mui/material';
-import { UserProvider } from './services/contexts/UserContext';
+import { CssBaseline, StyledEngineProvider } from '@mui/material';
+import UserProvider from './services/contexts/UserContext';
 import Navbar from './components/Navbar';
 import { Outlet } from 'react-router-dom';
 
@@ -9,8 +8,10 @@ export const App: FC<AppProps> = ({ customOutlet }) => {
     <>
       <CssBaseline />
       <UserProvider>
-        <Navbar />
-        {customOutlet ?? <Outlet />}
+        <StyledEngineProvider injectFirst>
+          <Navbar />
+          {outlet ?? <Outlet />}
+        </StyledEngineProvider>
       </UserProvider>
     </>
   );

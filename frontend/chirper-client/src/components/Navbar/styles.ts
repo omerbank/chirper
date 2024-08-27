@@ -1,19 +1,48 @@
-import { CustomButtonOptions } from '../CustomButton/types';
+import { useTheme } from '@mui/material';
+import { css } from '@emotion/css';
 
-export const logInButtonOptions: CustomButtonOptions = {
-  variant: 'contained',
-  size: 'large',
-  textColor: 'black',
-  backgroundColor: 'white',
-  hoverColor: '#d9d9d9',
-  text: 'Log in',
-};
+export const useStyles = () => {
+  const theme = useTheme();
 
-export const signUpButtonOptions: CustomButtonOptions = {
-  variant: 'contained',
-  size: 'large',
-  textColor: 'white',
-  backgroundColor: '#164e58',
-  hoverColor: '#13424b',
-  text: 'Sign Up',
+  return {
+    appBar: css({
+      backgroundColor: '#347380',
+      marginBottom: theme.spacing(5),
+      paddingRight: theme.spacing(2),
+    }),
+
+    toolBar: css({
+      padding: theme.spacing(1),
+      display: 'flex',
+      gap: theme.spacing(1),
+    }),
+
+    logoTxt: css({
+      fontFamily: 'monospace',
+      fontWeight: 'bold',
+      letterSpacing: '.3rem',
+    }),
+
+    buttons: css({
+      marginLeft: 'auto',
+      display: 'flex',
+      gap: theme.spacing(2),
+    }),
+
+    loginBtn: css({
+      color: 'black',
+      backgroundColor: 'white',
+      ':hover': {
+        backgroundColor: '#d9d9d9',
+      },
+    }),
+
+    signUpBtn: css({
+      color: 'white',
+      backgroundColor: '#164e58',
+      ':hover': {
+        backgroundColor: '#13424b',
+      },
+    }),
+  };
 };

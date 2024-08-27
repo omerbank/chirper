@@ -1,32 +1,36 @@
-import { AppBar, Box, Toolbar, Typography } from '@mui/material';
+import { useStyles } from './styles';
+import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import CustomButton from '../CustomButton';
-import { logInButtonOptions, signUpButtonOptions } from './styles';
 
 export default function Navbar() {
+  const classes = useStyles();
+
   return (
-    <AppBar
-      position="static"
-      elevation={0}
-      sx={{ background: '#347380', mb: 5, pr: 2 }}
-    >
-      <Toolbar sx={{ p: 1, display: 'flex', gap: 1 }} disableGutters>
+    <AppBar position="static" elevation={0} className={classes.appBar}>
+      <Toolbar className={classes.toolBar} disableGutters>
         <Link to="">
           <img src="/chirper.svg" alt="Chirper Logo" width="75" />
         </Link>
-        <Typography
-          variant="h5"
-          sx={{
-            fontFamily: 'monospace',
-            fontWeight: 600,
-            letterSpacing: '.3rem',
-          }}
-        >
+        <Typography variant="h5" className={classes.logoTxt}>
           CHIRPER
         </Typography>
-        <Box sx={{ ml: 'auto', display: 'flex', gap: 2 }}>
-          <CustomButton options={logInButtonOptions}></CustomButton>
-          <CustomButton options={signUpButtonOptions}></CustomButton>
+        <Box className={classes.buttons}>
+          <Button
+            variant="contained"
+            size="large"
+            className={classes.loginBtn}
+            disableElevation
+          >
+            Log in
+          </Button>
+          <Button
+            variant="contained"
+            size="large"
+            className={classes.signUpBtn}
+            disableElevation
+          >
+            Sign Up
+          </Button>
         </Box>
       </Toolbar>
     </AppBar>
