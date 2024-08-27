@@ -1,4 +1,4 @@
-import { CssBaseline } from '@mui/material';
+import { CssBaseline, StyledEngineProvider } from '@mui/material';
 import UserProvider from './services/contexts/UserContext';
 import Navbar from './components/Navbar';
 import { Outlet } from 'react-router-dom';
@@ -9,8 +9,10 @@ export default function App({ outlet }: AppProps) {
     <>
       <CssBaseline />
       <UserProvider>
-        <Navbar />
-        {outlet ?? <Outlet />}
+        <StyledEngineProvider injectFirst>
+          <Navbar />
+          {outlet ?? <Outlet />}
+        </StyledEngineProvider>
       </UserProvider>
     </>
   );
