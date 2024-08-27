@@ -14,6 +14,7 @@ import {
   TextField,
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { useStyles } from './styles';
 
 export default function SearchBarAndSort({
   searchText,
@@ -21,8 +22,10 @@ export default function SearchBarAndSort({
   onSearchTextChange,
   onSortMethodChange,
 }: SearchBarAndSortProps) {
+  const classes = useStyles();
+
   return (
-    <Box sx={{ width: 540, display: 'flex', gap: 2 }}>
+    <Box className={classes.searchBarAndSort}>
       <FormControl>
         <InputLabel id="sort-by-label">Sort By</InputLabel>
         <Select
@@ -50,7 +53,7 @@ export default function SearchBarAndSort({
         variant="outlined"
         value={searchText}
         onChange={(e) => onSearchTextChange(e.target.value)}
-        sx={{ flexGrow: 1 }}
+        className={classes.searchBar}
       />
     </Box>
   );

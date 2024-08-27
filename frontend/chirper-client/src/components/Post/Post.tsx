@@ -11,24 +11,27 @@ import {
 } from '@mui/material';
 import { formatDate } from './utils';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useStyles } from './styles';
 
 export default function Post({ post }: PostProps) {
+  const classes = useStyles();
+
   return (
-    <Card variant="outlined" sx={{ width: 540 }}>
+    <Card variant="outlined" className={classes.card}>
       <CardHeader
         avatar={
           <Avatar
             src={post.avatarUrl}
             alt={`${post.username}'s Avatar`}
-            sx={{ width: 52, height: 52 }}
+            className={classes.avatar}
           />
         }
         title={`@${post.username}`}
         subheader={formatDate(post.postedAt)}
         titleTypographyProps={{ fontSize: 16, fontWeight: 600 }}
-        sx={{ pb: 0 }}
+        className={classes.cardHeader}
       />
-      <Box sx={{ ml: '4px' }}>
+      <Box className={classes.contentAndLikes}>
         <CardContent>
           <Typography variant="body1">{post.content}</Typography>
         </CardContent>
@@ -36,7 +39,7 @@ export default function Post({ post }: PostProps) {
           <IconButton onClick={(e) => e.preventDefault()}>
             <FavoriteIcon />
           </IconButton>
-          <Typography variant="button" sx={{ ml: '-2px !important' }}>
+          <Typography variant="button" className={classes.likesNum}>
             {post.likesNum > 0 && post.likesNum}
           </Typography>
         </CardActions>
