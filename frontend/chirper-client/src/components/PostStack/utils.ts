@@ -1,22 +1,17 @@
 import { Post } from '../Post/types';
+import { curry, includes, lowerCase, orderBy } from 'lodash/fp';
 import {
   SortMethod,
   sortMethodsDetails,
 } from '../../views/Home/SearchBarAndSort/types';
 
-export function getFilteredPosts(posts: Post[], filterText: string) {
-  return posts.filter((post) =>
-    post.content.toLowerCase().includes(filterText.toLowerCase())
-  );
-}
+export const isPostFiltered = curry((filterText: string, { content }: Post) =>
+  includes(lowerCase(filterText), lowerCase(content))
+);
 
 export function getSortedPosts(posts: Post[], sortMethod: SortMethod) {
-  const sortKey = sortMethodsDetails[sortMethod].sortProperty as keyof Post;
-  const isAscending = sortMethod.endsWith('asc');
+  const sortKey = sortMethodsDetails[sortMethod].sortProperty;
+  const sortOrder = sortMethodsDetails[sortMethod].order as 'asc' | 'desc';
 
-  return [...posts].sort((postA, postB) => {
-    return isAscending
-      ? +postA[sortKey] - +postB[sortKey]
-      : +postB[sortKey] - +postA[sortKey];
-  });
+  return orderBy(sortKey, sortOrder, posts);
 }
