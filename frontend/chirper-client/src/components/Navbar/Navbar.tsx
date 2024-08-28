@@ -15,14 +15,16 @@ export const Navbar = () => {
           CHIRPER
         </Typography>
         <Box className={classes.buttons}>
-          <Button
-            variant="contained"
-            size="large"
-            className={classes.loginBtn}
-            disableElevation
-          >
-            Log in
-          </Button>
+          <Link to="login">
+            <Button
+              variant="contained"
+              size="large"
+              className={classes.loginBtn}
+              disableElevation
+            >
+              Log in
+            </Button>
+          </Link>
           <Button
             variant="contained"
             size="large"
