@@ -1,3 +1,5 @@
+import { SetURLSearchParams } from 'react-router-dom';
+
 export const sortMethods = [
   'date-desc',
   'date-asc',
@@ -33,6 +35,6 @@ export const sortMethodsDetails = {
 export type SearchBarAndSortProps = {
   searchText: string;
   sortMethod: SortMethod;
-  onSearchTextChange: (newSearchText: string) => void;
-  onSortMethodChange: (newSortMethod: SortMethod) => void;
+  searchParams: URLSearchParams;
+  setSearchParams: SetURLSearchParams;
 };

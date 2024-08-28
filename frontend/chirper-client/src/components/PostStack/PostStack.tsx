@@ -9,8 +9,8 @@ import { useStyles } from './styles';
 
 export const PostStack: FC<PostStackProps> = ({
   posts,
-  searchText = '',
-  sortMethod = 'date-desc',
+  searchText,
+  sortMethod,
 }) => {
   const classes = useStyles();
 

@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import {
   SearchBarAndSortProps,
-  SortMethod,
   sortMethods,
   sortMethodsDetails,
 } from './types';
@@ -14,14 +13,15 @@ import {
   Select,
   TextField,
 } from '@mui/material';
+import { map } from 'lodash/fp';
 import SearchIcon from '@mui/icons-material/Search';
 import { useStyles } from './styles';
 
 export const SearchBarAndSort: FC<SearchBarAndSortProps> = ({
   searchText,
   sortMethod,
-  onSearchTextChange,
-  onSortMethodChange,
+  searchParams,
+  setSearchParams,
 }) => {
   const classes = useStyles();
 
@@ -33,13 +33,19 @@ export const SearchBarAndSort: FC<SearchBarAndSortProps> = ({
           labelId="sort-by-label"
           label="Sort By"
           value={sortMethod}
-          onChange={(e) => onSortMethodChange(e.target.value as SortMethod)}
+          onChange={(e) => {
+            searchParams.set('sort_by', e.target.value);
+            setSearchParams(searchParams);
+          }}
         >
-          {sortMethods.map((sortMethod) => (
-            <MenuItem value={sortMethod} key={sortMethod}>
-              {sortMethodsDetails[sortMethod].displayName}
-            </MenuItem>
-          ))}
+          {map(
+            (sortMethod) => (
+              <MenuItem value={sortMethod} key={sortMethod}>
+                {sortMethodsDetails[sortMethod].displayName}
+              </MenuItem>
+            ),
+            sortMethods
+          )}
         </Select>
       </FormControl>
       <TextField
@@ -51,9 +57,18 @@ export const SearchBarAndSort: FC<SearchBarAndSortProps> = ({
             </InputAdornment>
           ),
         }}
+        autoComplete="off"
         variant="outlined"
         value={searchText}
-        onChange={(e) => onSearchTextChange(e.target.value)}
+        onChange={(e) => {
+          if (e.target.value) {
+            searchParams.set('search', e.target.value);
+          } else {
+            searchParams.delete('search');
+          }
+
+          setSearchParams(searchParams);
+        }}
         className={classes.searchBar}
       />
     </Box>
