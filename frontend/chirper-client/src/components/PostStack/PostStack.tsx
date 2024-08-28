@@ -1,16 +1,17 @@
+import { FC } from 'react';
 import { PostStackProps } from './types';
 import { filter, map } from 'lodash/fp';
 import { getSortedPosts, isPostFiltered } from './utils';
 import { Alert, Stack } from '@mui/material';
-import Post from '../Post';
+import { Post } from '../Post';
 import { Link } from 'react-router-dom';
 import { useStyles } from './styles';
 
-export default function PostStack({
+export const PostStack: FC<PostStackProps> = ({
   posts,
   searchText = '',
   sortMethod = 'date-desc',
-}: PostStackProps) {
+}) => {
   const classes = useStyles();
 
   const filteredPosts = filter(isPostFiltered(searchText), posts);
@@ -36,4 +37,4 @@ export default function PostStack({
       )}
     </Stack>
   );
-}
+};

@@ -1,1 +1,1 @@
-export { default } from './SearchBarAndSort';
+export { SearchBarAndSort } from './SearchBarAndSort';

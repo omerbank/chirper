@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import {
   SearchBarAndSortProps,
   SortMethod,
@@ -16,12 +17,12 @@ import {
 import SearchIcon from '@mui/icons-material/Search';
 import { useStyles } from './styles';
 
-export default function SearchBarAndSort({
+export const SearchBarAndSort: FC<SearchBarAndSortProps> = ({
   searchText,
   sortMethod,
   onSearchTextChange,
   onSortMethodChange,
-}: SearchBarAndSortProps) {
+}) => {
   const classes = useStyles();
 
   return (
@@ -57,4 +58,4 @@ export default function SearchBarAndSort({
       />
     </Box>
   );
-}
+};

@@ -1,7 +1,7 @@
 import { useLoaderData } from 'react-router-dom';
 import { PostProps } from '../../components/Post/types';
 import { Grid } from '@mui/material';
-import Post from '../../components/Post';
+import { Post } from '../../components/Post';
 
 export const PostPage = () => {
   const { post } = useLoaderData() as PostProps;

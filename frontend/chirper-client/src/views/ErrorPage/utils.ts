@@ -1,6 +1,6 @@
 import { isRouteErrorResponse } from 'react-router-dom';
 
-export function getErrorMessage(error: unknown) {
+export const getErrorMessage = (error: unknown) => {
   let errorMessage;
 
   if (isRouteErrorResponse(error)) {
@@ -14,4 +14,4 @@ export function getErrorMessage(error: unknown) {
   }
 
   return errorMessage;
-}
+};

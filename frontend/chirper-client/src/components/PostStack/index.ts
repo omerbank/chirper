@@ -1,1 +1,1 @@
-export { default } from './PostStack';
+export { PostStack } from './PostStack';

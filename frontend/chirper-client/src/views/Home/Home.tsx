@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { SortMethod } from './SearchBarAndSort/types';
 import { Grid } from '@mui/material';
-import SearchBarAndSort from './SearchBarAndSort';
-import PostStack from '../../components/PostStack';
+import { SearchBarAndSort } from './SearchBarAndSort';
+import { PostStack } from '../../components/PostStack';
 import { posts } from '../../data';
 
-export default function Home() {
+export const Home = () => {
   const [searchText, setSearchText] = useState('');
   const [sortMethod, setSortMethod] = useState<SortMethod>('date-desc');
 
@@ -24,4 +24,4 @@ export default function Home() {
       />
     </Grid>
   );
-}
+};

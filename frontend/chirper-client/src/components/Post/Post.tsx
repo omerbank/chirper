@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { PostProps } from './types';
 import {
   Avatar,
@@ -13,7 +14,7 @@ import moment from 'moment';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useStyles } from './styles';
 
-export default function Post({ post }: PostProps) {
+export const Post: FC<PostProps> = ({ post }) => {
   const classes = useStyles();
 
   return (
@@ -46,4 +47,4 @@ export default function Post({ post }: PostProps) {
       </Box>
     </Card>
   );
-}
+};

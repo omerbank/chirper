@@ -2,7 +2,7 @@ import { useStyles } from './styles';
 import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-export default function Navbar() {
+export const Navbar = () => {
   const classes = useStyles();
 
   return (
@@ -35,4 +35,4 @@ export default function Navbar() {
       </Toolbar>
     </AppBar>
   );
-}
+};

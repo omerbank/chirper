@@ -2,7 +2,7 @@ import { useRouteError } from 'react-router-dom';
 import { getErrorMessage } from './utils';
 import { Alert, AlertTitle, Grid } from '@mui/material';
 
-export default function ErrorPage() {
+export const ErrorPage = () => {
   const error = useRouteError();
   const errorMessage = getErrorMessage(error);
 
@@ -16,4 +16,4 @@ export default function ErrorPage() {
       </Alert>
     </Grid>
   );
-}
+};
