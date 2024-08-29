@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Grid } from '@mui/material';
 import { SearchBarAndSort } from './SearchBarAndSort';
 import { PostStack } from '../../components/PostStack';
-import { posts } from '../../data';
+import { getAllPosts } from '../../api';
 
 export const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -20,7 +20,7 @@ export const Home = () => {
         setSearchParams={setSearchParams}
       />
       <PostStack
-        posts={posts}
+        posts={getAllPosts()}
         searchText={searchText}
         sortMethod={sortMethod}
       />

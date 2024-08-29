@@ -1,9 +1,8 @@
 import { LoaderFunctionArgs } from 'react-router-dom';
-import { find } from 'lodash/fp';
-import { posts } from '../../data';
+import { getPostById } from '../../api';
 
 export const loader = ({ params }: LoaderFunctionArgs) => {
-  const post = find((post) => post.id === params.id, posts);
+  const post = getPostById(params.id);
 
   if (!post) {
     throw new Response('', {

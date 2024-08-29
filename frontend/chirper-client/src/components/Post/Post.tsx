@@ -22,13 +22,13 @@ export const Post: FC<PostProps> = ({ post }) => {
       <CardHeader
         avatar={
           <Avatar
-            src={post.avatarUrl}
-            alt={`${post.username}'s Avatar`}
+            src={post.user.avatarUrl}
+            alt={`${post.user.username}'s Avatar`}
             className={classes.avatar}
           />
         }
-        title={`@${post.username}`}
-        subheader={moment(post.postedAt).format('MMMM DD, y, HH:mm')}
+        title={`@${post.user.username}`}
+        subheader={moment(post.createdAt).format('MMMM DD, y, HH:mm')}
         titleTypographyProps={{ fontSize: 16, fontWeight: 600 }}
         className={classes.cardHeader}
       />

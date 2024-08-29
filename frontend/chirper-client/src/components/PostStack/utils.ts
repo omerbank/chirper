@@ -13,7 +13,7 @@ export const isPostFiltered = curry((filterText: string, { content }: Post) =>
 export const getSortedPosts = (posts: Post[], sortMethod: SortMethod) => {
   const sortKey = sortMethodsDetails[sortMethod].sortProperty;
   const sortProperty =
-    sortKey !== 'postedAt' ? sortKey : (post: Post) => moment(post.postedAt);
+    sortKey !== 'postedAt' ? sortKey : (post: Post) => moment(post.createdAt);
   const sortOrder = sortMethodsDetails[sortMethod].order as 'asc' | 'desc';
 
   return orderBy(sortProperty, sortOrder, posts);
