@@ -35,6 +35,5 @@ export const sortMethodsDetails = {
 export type SearchBarAndSortProps = {
   searchText: string;
   sortMethod: SortMethod;
-  searchParams: URLSearchParams;
   setSearchParams: SetURLSearchParams;
 };

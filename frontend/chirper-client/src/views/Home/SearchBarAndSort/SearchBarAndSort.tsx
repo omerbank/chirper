@@ -20,7 +20,6 @@ import { useStyles } from './styles';
 export const SearchBarAndSort: FC<SearchBarAndSortProps> = ({
   searchText,
   sortMethod,
-  searchParams,
   setSearchParams,
 }) => {
   const classes = useStyles();
@@ -33,10 +32,18 @@ export const SearchBarAndSort: FC<SearchBarAndSortProps> = ({
           labelId="sort-by-label"
           label="Sort By"
           value={sortMethod}
-          onChange={(e) => {
-            searchParams.set('sort_by', e.target.value);
-            setSearchParams(searchParams);
-          }}
+          onChange={(e) =>
+            setSearchParams(
+              (prevParams) => {
+                prevParams.set('sort', e.target.value);
+                if (prevParams.get('search') === '')
+                  prevParams.delete('search');
+
+                return prevParams;
+              },
+              { replace: true }
+            )
+          }
         >
           {map(
             (sortMethod) => (
@@ -60,15 +67,17 @@ export const SearchBarAndSort: FC<SearchBarAndSortProps> = ({
         autoComplete="off"
         variant="outlined"
         value={searchText}
-        onChange={(e) => {
-          if (e.target.value) {
-            searchParams.set('search', e.target.value);
-          } else {
-            searchParams.delete('search');
-          }
+        onChange={(e) =>
+          setSearchParams(
+            (prevParams) => {
+              if (e.target.value === '') prevParams.delete('search');
+              else prevParams.set('search', e.target.value);
 
-          setSearchParams(searchParams);
-        }}
+              return prevParams;
+            },
+            { replace: true }
+          )
+        }
         className={classes.searchBar}
       />
     </Box>

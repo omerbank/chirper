@@ -6,17 +6,19 @@ import { PostStack } from '../../components/PostStack';
 import { getAllPosts } from '../../api';
 
 export const Home = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams({
+    sort: 'date-desc',
+    search: '',
+  });
 
-  const searchText = searchParams.get('search') ?? '';
-  const sortMethod = (searchParams.get('sort_by') ?? 'date-desc') as SortMethod;
+  const searchText = searchParams.get('search')!;
+  const sortMethod = searchParams.get('sort') as SortMethod;
 
   return (
     <Grid container direction="column" alignItems="center" gap={2}>
       <SearchBarAndSort
         searchText={searchText}
         sortMethod={sortMethod}
-        searchParams={searchParams}
         setSearchParams={setSearchParams}
       />
       <PostStack
