@@ -1,11 +1,13 @@
-import { SortMethod } from './SearchBarAndSort/types';
+import { usePosts } from '../../services/posts/hooks/usePosts';
 import { useSearchParams } from 'react-router-dom';
+import { SortMethod } from './SearchBarAndSort/types';
 import { Grid } from '@mui/material';
+import { LoadingSpinner } from '../../components/LoadingSpinner';
 import { SearchBarAndSort } from './SearchBarAndSort';
 import { PostStack } from '../../components/PostStack';
-import { getAllPosts } from '../../api';
 
 export const Home = () => {
+  const { isPending, isSuccess, data } = usePosts();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const searchText = searchParams.get('search') ?? '';
@@ -13,17 +15,22 @@ export const Home = () => {
 
   return (
     <Grid container direction="column" alignItems="center" gap={2}>
-      <SearchBarAndSort
-        searchText={searchText}
-        sortMethod={sortMethod}
-        searchParams={searchParams}
-        setSearchParams={setSearchParams}
-      />
-      <PostStack
-        posts={getAllPosts()}
-        searchText={searchText}
-        sortMethod={sortMethod}
-      />
+      {isPending && <LoadingSpinner />}
+      {isSuccess && (
+        <>
+          <SearchBarAndSort
+            searchText={searchText}
+            sortMethod={sortMethod}
+            searchParams={searchParams}
+            setSearchParams={setSearchParams}
+          />
+          <PostStack
+            posts={data}
+            searchText={searchText}
+            sortMethod={sortMethod}
+          />
+        </>
+      )}
     </Grid>
   );
 };

@@ -26,6 +26,7 @@ export const useStyles = () => {
     buttons: css({
       marginLeft: 'auto',
       display: 'flex',
+      alignItems: 'center',
       gap: theme.spacing(2),
     }),
 
@@ -43,6 +44,20 @@ export const useStyles = () => {
       ':hover': {
         backgroundColor: '#13424b',
       },
+    }),
+
+    avatar: css({
+      width: 50,
+      height: 50,
+    }),
+
+    logOutBtn: css({
+      color: 'white',
+      borderColor: 'white',
+      ':hover': {
+        borderColor: 'white',
+      },
+      height: '40px',
     }),
   };
 };

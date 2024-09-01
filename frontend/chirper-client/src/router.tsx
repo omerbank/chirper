@@ -3,7 +3,6 @@ import { App } from './App';
 import ErrorPage from './views/ErrorPage';
 import Home from './views/Home';
 import PostPage from './views/PostPage';
-import { loader as postPageLoader } from './views/PostPage/utils';
 import Login from './views/Login';
 
 export const router = createBrowserRouter([
@@ -16,7 +15,6 @@ export const router = createBrowserRouter([
       {
         path: 'posts/:id',
         element: <PostPage />,
-        loader: postPageLoader,
       },
       {
         path: 'login',
