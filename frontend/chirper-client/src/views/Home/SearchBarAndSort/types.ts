@@ -11,12 +11,12 @@ export type SortMethod = (typeof sortMethods)[number];
 
 export const sortMethodsDetails = {
   'date-desc': {
-    sortProperty: 'postedAt',
+    sortProperty: 'createdAt',
     displayName: 'Newest First',
     order: 'desc',
   },
   'date-asc': {
-    sortProperty: 'postedAt',
+    sortProperty: 'createdAt',
     displayName: 'Oldest First',
     order: 'asc',
   },

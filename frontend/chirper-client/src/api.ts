@@ -1,8 +1,11 @@
 import { find, map } from 'lodash/fp';
-import { users } from './data/users';
 import { posts } from './data/posts';
+import { users } from './data/users';
 import { LoginCredentials } from './views/Login/types';
+import { SignUpCredentials } from './views/SignUp/types';
 import { PostWithoutUser } from './components/Post/types';
+
+const DEFAULT_AVATAR_PATH = '/default-avatar.jpg';
 
 export const getAllPosts = async () => {
   await fakeNetwork();
@@ -25,6 +28,24 @@ export const login = async ({ username, password }: LoginCredentials) => {
   if (!user) throw new Error('Username or password are incorrect.');
 
   return user;
+};
+
+export const addUser = async ({
+  username,
+  password,
+  avatarUrl,
+}: SignUpCredentials) => {
+  await fakeNetwork();
+
+  const newUser = {
+    id: crypto.randomUUID(),
+    username,
+    password,
+    avatarUrl: avatarUrl || DEFAULT_AVATAR_PATH,
+  };
+
+  users.push(newUser);
+  return newUser;
 };
 
 const fakeNetwork = async () => {

@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { PostProps } from './types';
+import { useStyles } from './styles';
 import {
   Avatar,
   Box,
@@ -12,7 +13,6 @@ import {
 } from '@mui/material';
 import moment from 'moment';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useStyles } from './styles';
 
 export const Post: FC<PostProps> = ({ post }) => {
   const classes = useStyles();

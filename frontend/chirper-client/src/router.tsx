@@ -4,6 +4,7 @@ import ErrorPage from './views/ErrorPage';
 import Home from './views/Home';
 import PostPage from './views/PostPage';
 import Login from './views/Login';
+import SignUp from './views/SignUp';
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
       {
         path: 'login',
         element: <Login />,
+      },
+      {
+        path: 'sign-up',
+        element: <SignUp />,
       },
     ],
   },

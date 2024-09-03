@@ -9,5 +9,9 @@ export const useStyles = () => {
       width: 540,
       marginTop: theme.spacing(2),
     }),
+
+    postLink: css({
+      textDecoration: 'none',
+    }),
   };
 };

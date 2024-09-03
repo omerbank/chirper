@@ -1,6 +1,6 @@
 import { Dispatch, ReactNode, SetStateAction } from 'react';
 
-type User = {
+export type User = {
   id: string;
   username: string;
   avatarUrl: string;

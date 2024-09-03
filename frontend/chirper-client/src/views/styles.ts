@@ -11,20 +11,23 @@ export const useStyles = () => {
       flexDirection: 'column',
       gap: theme.spacing(4),
     }),
+
     inputFields: css({
       display: 'flex',
       flexDirection: 'column',
       gap: theme.spacing(2),
     }),
+
     inputField: css({
       display: 'flex',
       flexDirection: 'column',
       gap: theme.spacing(1),
     }),
+
     submitBtn: css({
-      backgroundColor: '#347380',
+      backgroundColor: theme.palette.primary.main,
       ':hover': {
-        backgroundColor: '#2c626d',
+        backgroundColor: theme.palette.primary.dark,
       },
     }),
   };

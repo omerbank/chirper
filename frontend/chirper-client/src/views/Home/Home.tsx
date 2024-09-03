@@ -1,8 +1,7 @@
 import { usePosts } from '../../services/posts/hooks/usePosts';
 import { useSearchParams } from 'react-router-dom';
 import { SortMethod } from './SearchBarAndSort/types';
-import { Grid } from '@mui/material';
-import { LoadingSpinner } from '../../components/LoadingSpinner';
+import { CircularProgress, Grid } from '@mui/material';
 import { SearchBarAndSort } from './SearchBarAndSort';
 import { PostStack } from '../../components/PostStack';
 
@@ -18,7 +17,7 @@ export const Home = () => {
 
   return (
     <Grid container direction="column" alignItems="center" gap={2}>
-      {isPending && <LoadingSpinner />}
+      {isPending && <CircularProgress />}
       {isSuccess && (
         <>
           <SearchBarAndSort

@@ -6,7 +6,7 @@ export const useStyles = () => {
 
   return {
     appBar: css({
-      backgroundColor: '#347380',
+      backgroundColor: theme.palette.primary.main,
       marginBottom: theme.spacing(5),
       paddingRight: theme.spacing(2),
     }),
@@ -21,43 +21,7 @@ export const useStyles = () => {
       fontFamily: 'monospace',
       fontWeight: 'bold',
       letterSpacing: '.3rem',
-    }),
-
-    buttons: css({
-      marginLeft: 'auto',
-      display: 'flex',
-      alignItems: 'center',
-      gap: theme.spacing(2),
-    }),
-
-    loginBtn: css({
-      color: 'black',
-      backgroundColor: 'white',
-      ':hover': {
-        backgroundColor: '#d9d9d9',
-      },
-    }),
-
-    signUpBtn: css({
-      color: 'white',
-      backgroundColor: '#164e58',
-      ':hover': {
-        backgroundColor: '#13424b',
-      },
-    }),
-
-    avatar: css({
-      width: 50,
-      height: 50,
-    }),
-
-    logOutBtn: css({
-      color: 'white',
-      borderColor: 'white',
-      ':hover': {
-        borderColor: 'white',
-      },
-      height: '40px',
+      flexGrow: 1,
     }),
   };
 };

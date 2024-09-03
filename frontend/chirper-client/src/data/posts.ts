@@ -11,7 +11,7 @@ export const posts = [
     user: 'f175a5b0-89d4-4bb6-a08b-a88e6b68de5f',
     content: "Wow, Chirper is so cool. It's my new favorite social media.",
     createdAt: '2013-03-26T21:21:22Z',
-    likesNum: 1,
+    likesNum: 512,
   },
   {
     id: 'ca18c92d-918b-4d2c-8689-dc9173d63ae0',

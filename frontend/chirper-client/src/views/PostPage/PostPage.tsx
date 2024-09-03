@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { usePost } from '../../services/posts/hooks/usePost';
-import { Grid } from '@mui/material';
-import { LoadingSpinner } from '../../components/LoadingSpinner';
+import { CircularProgress, Grid } from '@mui/material';
 import { Post } from '../../components/Post';
 
 export const PostPage = () => {
@@ -10,7 +9,7 @@ export const PostPage = () => {
 
   return (
     <Grid container justifyContent="center">
-      {isPending && <LoadingSpinner />}
+      {isPending && <CircularProgress />}
       {isSuccess && <Post post={data} />}
     </Grid>
   );

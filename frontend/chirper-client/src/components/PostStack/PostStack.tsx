@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { PostStackProps } from './types';
+import { useStyles } from './styles';
 import { filter, map } from 'lodash/fp';
 import { getSortedPosts, isPostFiltered } from './utils';
 import { Alert, Stack } from '@mui/material';
-import { Post } from '../Post';
 import { Link } from 'react-router-dom';
-import { useStyles } from './styles';
+import { Post } from '../Post';
 
 export const PostStack: FC<PostStackProps> = ({
   posts,
@@ -28,7 +28,7 @@ export const PostStack: FC<PostStackProps> = ({
           <Link
             to={`posts/${post.id}`}
             key={post.id}
-            style={{ textDecoration: 'none' }}
+            className={classes.postLink}
           >
             <Post post={post} />
           </Link>

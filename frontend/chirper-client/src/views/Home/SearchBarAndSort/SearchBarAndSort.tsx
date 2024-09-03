@@ -4,6 +4,7 @@ import {
   sortMethods,
   sortMethodsDetails,
 } from './types';
+import { useStyles } from './styles';
 import {
   Box,
   FormControl,
@@ -13,9 +14,9 @@ import {
   Select,
   TextField,
 } from '@mui/material';
+import { changeSearchText, changeSortBy } from './utils';
 import { map } from 'lodash/fp';
 import SearchIcon from '@mui/icons-material/Search';
-import { useStyles } from './styles';
 
 export const SearchBarAndSort: FC<SearchBarAndSortProps> = ({
   searchText,
@@ -27,23 +28,11 @@ export const SearchBarAndSort: FC<SearchBarAndSortProps> = ({
   return (
     <Box className={classes.searchBarAndSort}>
       <FormControl>
-        <InputLabel id="sort-by-label">Sort By</InputLabel>
+        <InputLabel>Sort By</InputLabel>
         <Select
-          labelId="sort-by-label"
           label="Sort By"
           value={sortMethod}
-          onChange={(e) =>
-            setSearchParams(
-              (prevParams) => {
-                prevParams.set('sort', e.target.value);
-                if (prevParams.get('search') === '')
-                  prevParams.delete('search');
-
-                return prevParams;
-              },
-              { replace: true }
-            )
-          }
+          onChange={changeSortBy(setSearchParams)}
         >
           {map(
             (sortMethod) => (
@@ -60,24 +49,13 @@ export const SearchBarAndSort: FC<SearchBarAndSortProps> = ({
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
-              <SearchIcon></SearchIcon>
+              <SearchIcon />
             </InputAdornment>
           ),
         }}
         autoComplete="off"
-        variant="outlined"
         value={searchText}
-        onChange={(e) =>
-          setSearchParams(
-            (prevParams) => {
-              if (e.target.value === '') prevParams.delete('search');
-              else prevParams.set('search', e.target.value);
-
-              return prevParams;
-            },
-            { replace: true }
-          )
-        }
+        onChange={changeSearchText(setSearchParams)}
         className={classes.searchBar}
       />
     </Box>

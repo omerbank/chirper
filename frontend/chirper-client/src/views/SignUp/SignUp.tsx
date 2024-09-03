@@ -1,10 +1,9 @@
 import { useStyles } from '../styles';
 import { useForm } from 'react-hook-form';
-import { LoginCredentials } from './types';
+import { SignUpCredentials } from './types';
 import { useState } from 'react';
-import { useLogin } from '../../services/users/hooks/useLogin';
+import { useSignUp } from '../../services/users/hooks/useSignUp';
 import {
-  Alert,
   Box,
   Button,
   CircularProgress,
@@ -15,34 +14,61 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { getPasswordLoginProps, getUsernameLoginProps } from './utils';
+import {
+  getAvatarInputProps,
+  getConfirmPasswordProps,
+  getPasswordSignUpInputProps,
+  getUsernameSignUpInputProps,
+} from './utils';
 
-export const Login = () => {
+export const SignUp = () => {
   const classes = useStyles();
 
-  const { register, handleSubmit } = useForm<LoginCredentials>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm<SignUpCredentials>();
   const [showPassword, setShowPassword] = useState(false);
-  const { mutate, isPending, isError, error } = useLogin();
+  const { mutate, isPending } = useSignUp();
 
   return (
     <Grid container direction="column" alignItems="center" gap={3}>
-      <Typography variant="h4">Login</Typography>
+      <Typography variant="h4">Sign Up</Typography>
       <Box className={classes.fieldsAndSubmit}>
         <Divider />
         <Box className={classes.inputFields}>
           <FormControl className={classes.inputField}>
             <FormLabel>Username</FormLabel>
-            <TextField {...getUsernameLoginProps(register)} />
+            <TextField {...getUsernameSignUpInputProps(register, errors)} />
           </FormControl>
           <FormControl className={classes.inputField}>
             <FormLabel>Password</FormLabel>
             <TextField
-              {...getPasswordLoginProps(
+              {...getPasswordSignUpInputProps(
                 register,
+                errors,
                 showPassword,
                 setShowPassword
               )}
             />
+          </FormControl>
+          <FormControl className={classes.inputField}>
+            <FormLabel>Confirm Password</FormLabel>
+            <TextField
+              {...getConfirmPasswordProps(
+                register,
+                errors,
+                watch,
+                showPassword,
+                setShowPassword
+              )}
+            />
+          </FormControl>
+          <FormControl className={classes.inputField}>
+            <FormLabel>Profile Picture URL (Optional)</FormLabel>
+            <TextField {...getAvatarInputProps(register)} />
           </FormControl>
         </Box>
         <Button
@@ -52,9 +78,8 @@ export const Login = () => {
           className={classes.submitBtn}
           disableElevation
         >
-          Login
+          Sign Up
         </Button>
-        {isError && <Alert severity="error">{error.message}</Alert>}
       </Box>
       {isPending && <CircularProgress />}
     </Grid>
