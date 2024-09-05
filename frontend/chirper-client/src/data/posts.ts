@@ -3,7 +3,7 @@ export const posts = [
     id: 'b40bcb4d-1a2a-4b75-8380-ae607d18f6bd',
     user: '30b8c7e5-b9d7-4f5b-bc92-db70905762d7',
     content: 'This is my first Chirp!',
-    createdAt: '2026-07-13T13:54:24Z',
+    createdAt: '2023-07-13T13:54:24Z',
     likesNum: 54,
   },
   {
@@ -24,7 +24,7 @@ export const posts = [
     id: '42658136-6444-4824-ae3e-efb72457678c',
     user: '58d69548-9b42-4578-915a-d38acc5c6e62',
     content: 'Wowwwwww I love react so muchhhhhhhhhhhh',
-    createdAt: '2024-08-15T07:18:33Z',
+    createdAt: '2019-08-15T07:18:33Z',
     likesNum: 11,
   },
 ];

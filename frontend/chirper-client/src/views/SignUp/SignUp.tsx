@@ -31,7 +31,10 @@ export const SignUp = () => {
     watch,
   } = useForm<SignUpCredentials>();
   const [showPassword, setShowPassword] = useState(false);
+  const [showTits, setShowTits] = useState(false);
   const { mutate, isPending } = useSignUp();
+
+  const easterEgg = !showTits ? '(Optional)' : '(.Y.)';
 
   return (
     <Grid container direction="column" alignItems="center" gap={3}>
@@ -67,7 +70,10 @@ export const SignUp = () => {
             />
           </FormControl>
           <FormControl className={classes.inputField}>
-            <FormLabel>Profile Picture URL (Optional)</FormLabel>
+            <FormLabel>
+              Profile Picture URL{' '}
+              <span onClick={() => setShowTits(!showTits)}>{easterEgg}</span>
+            </FormLabel>
             <TextField {...getAvatarInputProps(register)} />
           </FormControl>
         </Box>

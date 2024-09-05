@@ -5,15 +5,20 @@ export const useStyles = () => {
   const theme = useTheme();
 
   return {
-    avatarAndBtn: css({
+    avatarAndBtns: css({
       display: 'flex',
       alignItems: 'center',
-      gap: theme.spacing(3),
+      gap: theme.spacing(2),
     }),
 
     avatar: css({
       width: 50,
       height: 50,
+    }),
+
+    addPostBtn: css({
+      color: 'white',
+      fontSize: '28px',
     }),
 
     logOutBtn: css({

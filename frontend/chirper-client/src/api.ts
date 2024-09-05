@@ -3,6 +3,8 @@ import { posts } from './data/posts';
 import { users } from './data/users';
 import { LoginCredentials } from './views/Login/types';
 import { SignUpCredentials } from './views/SignUp/types';
+import { NewPostInput } from './components/Navbar/LoggedIn/NewPostModal/types';
+import moment from 'moment';
 import { PostWithoutUser } from './components/Post/types';
 
 const DEFAULT_AVATAR_PATH = '/default-avatar.jpg';
@@ -46,6 +48,23 @@ export const addUser = async ({
 
   users.push(newUser);
   return newUser;
+};
+
+export const addPost = async (
+  userId: string,
+  { postContent }: NewPostInput
+) => {
+  await fakeNetwork();
+
+  const newPost = {
+    id: crypto.randomUUID(),
+    user: userId,
+    content: postContent,
+    createdAt: moment().toISOString(),
+    likesNum: 0,
+  };
+
+  posts.push(newPost);
 };
 
 const fakeNetwork = async () => {
