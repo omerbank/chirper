@@ -15,20 +15,20 @@ export class PostsController {
   constructor(private postsService: PostsService) {}
 
   @Get()
-  getAllPosts() {
+  async getAllPosts() {
     return this.postsService.getAllPosts();
   }
 
   @Get(':id')
-  getPostById(@Param('id', ParseUUIDPipe) id: string) {
-    const post = this.postsService.getPostById(id);
+  async getPostById(@Param('id', ParseUUIDPipe) id: string) {
+    const post = await this.postsService.getPostById(id);
     if (!post) throw new NotFoundException();
 
     return post;
   }
 
   @Post()
-  addPost(@Body() addPostDto: AddPostDto) {
+  async addPost(@Body() addPostDto: AddPostDto) {
     return this.postsService.addPost(addPostDto);
   }
 }

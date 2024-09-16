@@ -6,7 +6,7 @@ export class AddPostDto {
 
   @IsOptional()
   @IsUUID()
-  parentPostId: string | null;
+  parentPostId?: string;
 
   @IsString()
   @MaxLength(280)

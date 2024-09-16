@@ -1,29 +1,31 @@
 import { Injectable } from '@nestjs/common';
-import { Post } from 'src/types/post.type';
-import { find } from 'lodash/fp';
+import { DrizzleService } from 'db/drizzle.service';
+import { post } from '../../db/schema';
+import { eq } from 'drizzle-orm';
 import { AddPostDto } from 'src/dto/app-post.dto';
-import moment from 'moment';
 
 @Injectable()
 export class PostsService {
-  private readonly posts: Post[] = [];
+  constructor(private drizzleService: DrizzleService) {}
 
   getAllPosts() {
-    return this.posts;
+    return this.drizzleService.db.query.post.findMany({
+      with: {
+        user: true,
+      },
+    });
   }
 
   getPostById(id: string) {
-    return find(['id', id], this.posts);
+    return this.drizzleService.db.query.post.findFirst({
+      where: eq(post.id, id),
+      with: {
+        user: true,
+      },
+    });
   }
 
-  addPost(addPostDto: AddPostDto) {
-    const newPost = {
-      ...addPostDto,
-      id: crypto.randomUUID(),
-      createdAt: moment().toISOString(),
-      deletedAt: null,
-    };
-
-    this.posts.push(newPost);
+  async addPost(addPostDto: AddPostDto) {
+    await this.drizzleService.db.insert(post).values(addPostDto);
   }
 }
